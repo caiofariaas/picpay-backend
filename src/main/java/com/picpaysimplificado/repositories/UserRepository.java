@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     // Utilizamos o 'Optional' pois este método pode ou não, nos retornar um objeto do tipo 'User'
-    //
+    // O JPA ...
 
     Optional<User> findUserByDocument(String document);
 }
