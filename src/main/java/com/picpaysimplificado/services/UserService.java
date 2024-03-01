@@ -14,9 +14,9 @@ public class UserService {
     @Autowired
     private UserRepository repository;
 
-    public void validateTransaction(User sender, BigDecimal amount){
+    public void validateTransaction(User sender, BigDecimal amount) throws Exception {
         if (sender.getUserType() == UserType.MERCHANT){
-
+            throw new Exception ("Usuários do tipo 'lojista' não podem fazer transações");
         }
     }
 }
