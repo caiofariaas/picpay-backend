@@ -10,7 +10,11 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     // Utilizamos o 'Optional' pois este método pode ou não, nos retornar um objeto do tipo 'User'
-    // O JPA ...
+    // Não precisamos necessáriamente fazer a declaração deste método, pois,
+    // o JPA consegue entender um certo padrão de sintaxe e ele ja consegue montar essa query em nosso banco de dados
+
+    // quando declaramos como 'findUserByDocument' o JPA ja entende oque queremos fazer e cria esse método em 'runtime'
 
     Optional<User> findUserByDocument(String document);
+    Optional<User> findUserByID(Long id);
 }
