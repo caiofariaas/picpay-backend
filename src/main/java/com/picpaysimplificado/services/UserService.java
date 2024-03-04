@@ -18,5 +18,19 @@ public class UserService {
         if (sender.getUserType() == UserType.MERCHANT){
             throw new Exception ("Usuários do tipo 'lojista' não podem fazer transações");
         }
+        if (sender.getBalance().compareTo(amount) < 0){
+            throw new Exception("Saldo insuficiente!");
+        }
+    }
+
+    public User findUserById(Long id) throws Exception {
+
+        // aqui nós estamos buscando um usuário pelo ID e caso ele não exista, nós lançamos uma exceção
+
+        return this.repository.findUserById(id).orElseThrow(() -> new Exception("Usuario não encontrado!"));
+    }
+
+    public void saveUser(User user){
+        this.repository.save(user);
     }
 }
